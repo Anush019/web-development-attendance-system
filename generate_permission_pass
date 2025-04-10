@@ -1,0 +1,50 @@
+<?php
+include 'connection.php';
+
+// Fetch the data from PermissionRequest table
+$p_id = $_GET['p_id'];
+$sql = "SELECT * FROM PermissionRequest WHERE p_id = $p_id";  
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $username = $row['username'];
+    $employee_id = $row['employee_id'];
+    $date_of_permission = $row['date_of_permission'];
+    $permission_hours = $row['permission_hours'];
+    $reporting_officer = $row['reporting_officer'];
+    $status = $row['status'];
+    
+    if ($status === "Accepted") {
+        ob_start();
+        ?>
+        <div class="permission-pass" id="permission-pass">
+            <img src="permission_pass.png" alt="Permission Pass">
+            <div id="name" class="field">
+                <?php echo htmlspecialchars($username); ?>
+            </div>
+            <div id="employee_id" class="field">
+                <?php echo htmlspecialchars($employee_id); ?>
+            </div>
+            <div id="date_of_permission" class="field">
+                <?php echo htmlspecialchars($date_of_permission); ?>
+            </div>
+            <div id="permission_hours" class="field">
+                <?php echo htmlspecialchars($permission_hours); ?>
+            </div>
+            <div id="reporting_officer" class="field">
+                <?php echo htmlspecialchars($reporting_officer); ?>
+            </div>
+        </div>
+        <?php
+        $html = ob_get_clean();
+
+        echo $html;
+    } else {
+        echo "Permission not accepted";
+    }
+} else {
+    echo "No results found";
+}
+$conn->close();
+?>

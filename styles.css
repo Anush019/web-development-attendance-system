@@ -1,0 +1,29 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+#calendar-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#month-year-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.day-cell {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.green-cell {
+  background-color: lightgreen;
+}

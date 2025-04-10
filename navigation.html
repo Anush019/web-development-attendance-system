@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navigation Bar</title>
+<style>
+
+    .sandwich-button {
+            position: absolute;
+            top: 30px;
+            left: 10px;
+            z-index: 999;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .sandwich-bar {
+            width: 30px;
+            height: 4px;
+            background-color: #fff;
+            margin: 6px 0;
+        }
+  /* Style for the navigation bar */
+  .navigation-bar {
+    position: fixed;
+    top: 0;
+    left: -20%;
+    width: 20%;
+    height: 100%;
+    background-color: #333;
+    transition: left 0.3s ease;
+    z-index: 998;
+  }
+
+  .navigation-bar ul {
+    list-style-type: none;
+    padding-left: 30px;
+    margin: 0;
+    position: absolute;
+    top: 43%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+
+  .navigation-bar li {
+    padding: 20px auto;
+    margin-bottom: 10px;
+  }
+
+  .navigation-bar a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+<button class="sandwich-button" onclick="toggleMenu()">
+    <div class="sandwich-bar"></div>
+    <div class="sandwich-bar"></div>
+    <div class="sandwich-bar"></div>
+</button>
+<!-- Navigation bar -->
+<div class="navigation-bar" id="navbar">
+    <ul>
+        <li><a href="home.php">Home</a></li>
+        <li><a href="notification.php">Notifications</a></li>
+        <li><a href="accounts.php">Account</a></li>
+        <li><a href="compoff1.php">CompOff</a></li>
+        <li><a href="dispute.php">Attendance Regularization</a></li>
+        <li><a href="Leave.php">Leave Request</a></li>
+        <li><a href="help.php">Help</a></li>
+        <li><a href="daily.php">Daily Attendance</a></li>
+        <!-- <li><a href="monthtest.php">Monthly Attendance</a></li> -->
+        <li><a href="logout.php">Log Out</a></li>
+        <!-- Add more links if needed -->
+    </ul>
+</div>
+<script>
+    function toggleMenu() {
+        var navbar = document.getElementById("navbar");
+        if (navbar.style.left === "-20%") {
+            navbar.style.left = "0";
+        } else {
+            navbar.style.left = "-20%";
+        }
+    }
+</script>
+</body>
+</html>
